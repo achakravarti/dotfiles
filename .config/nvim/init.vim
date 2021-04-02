@@ -10,6 +10,7 @@ set ambiwidth=single
 set number
 set nowrap
 set showcmd
+set showtabline=2
 set incsearch
 
 if has('nvim')
@@ -51,6 +52,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
+Plug 'mengelbrecht/lightline-bufferline'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
@@ -150,6 +152,7 @@ let g:lightline = {
   \     ],
   \     'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok', 'filetype', 'fileformat', 'lineinfo', ]]
   \   },
+  \'tabline': { 'left': [ [ 'buffers' ] ], 'right': [ ['close'] ] },
 	\   'component': {
 	\     'lineinfo': ' %3l:%-2v',
 	\   },
@@ -169,6 +172,7 @@ let g:lightline.component_expand = {
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
+      \  'buffers': 'lightline#bufferline#buffers',
       \ }
 
 let g:lightline.component_type = {
@@ -177,6 +181,7 @@ let g:lightline.component_type = {
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
       \     'linter_ok': 'right',
+      \	    'buffers': 'tabsel',
       \ }
 
 let g:lightline#ale#indicator_checking="\uf110 "
@@ -184,6 +189,9 @@ let g:lightline#ale#indicator_infos="\uf129 "
 let g:lightline#ale#indicator_warnings="\uf071 "
 let g:lightline#ale#indicator_errors="\uf05e "
 let g:lightline#ale#indicator_ok="\uf00c"
+
+let g:lightline#bufferline#enable_devicons=1
+let g:lightline#bufferline#show_number=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -208,6 +216,10 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
         \ 'Unknown'   :'?',
 \ }
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Git gutter configuration
+"
 
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '✹'
@@ -238,7 +250,31 @@ let g:tagbar_vertical=40
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>t :FloatermToggle<CR>
+
 nnoremap <f5> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+nmap <Leader>d1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>d2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>d3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>d4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>d5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>d6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>d7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>d8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>d9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>d0 <Plug>lightline#bufferline#delete(10)
 
