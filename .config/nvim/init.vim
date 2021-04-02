@@ -184,12 +184,6 @@ let g:lightline.component_type = {
       \	    'buffers': 'tabsel',
       \ }
 
-let g:lightline#ale#indicator_checking="\uf110 "
-let g:lightline#ale#indicator_infos="\uf129 "
-let g:lightline#ale#indicator_warnings="\uf071 "
-let g:lightline#ale#indicator_errors="\uf05e "
-let g:lightline#ale#indicator_ok="\uf00c"
-
 let g:lightline#bufferline#enable_devicons=1
 let g:lightline#bufferline#show_number=2
 
@@ -230,9 +224,16 @@ let g:gitgutter_sign_removed = '✖'
 " ALE options
 "
 
+let g:ale_set_quickfix=1
 let g:ale_sign_column_always=1
 let g:ale_sign_error="\uf05e"
 let g:ale_sign_warning="\uf071"
+
+let g:lightline#ale#indicator_checking="\uf110 "
+let g:lightline#ale#indicator_infos="\uf129 "
+let g:lightline#ale#indicator_warnings="\uf071 "
+let g:lightline#ale#indicator_errors="\uf05e "
+let g:lightline#ale#indicator_ok="\uf00c"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,7 +255,7 @@ let mapleader=" "
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>t :FloatermToggle<CR>
 
-nnoremap <f5> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
+nnoremap <f5> :copen<bar> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
