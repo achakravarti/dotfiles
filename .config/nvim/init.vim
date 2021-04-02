@@ -277,18 +277,22 @@ nmap <leader>b8 <Plug>lightline#bufferline#go(8)
 nmap <leader>b9 <Plug>lightline#bufferline#go(9)
 nmap <leader>b0 <Plug>lightline#bufferline#go(10)
 
-nmap <Leader>d1 <Plug>lightline#bufferline#delete(1)
-nmap <Leader>d2 <Plug>lightline#bufferline#delete(2)
-nmap <Leader>d3 <Plug>lightline#bufferline#delete(3)
-nmap <Leader>d4 <Plug>lightline#bufferline#delete(4)
-nmap <Leader>d5 <Plug>lightline#bufferline#delete(5)
-nmap <Leader>d6 <Plug>lightline#bufferline#delete(6)
-nmap <Leader>d7 <Plug>lightline#bufferline#delete(7)
-nmap <Leader>d8 <Plug>lightline#bufferline#delete(8)
-nmap <Leader>d9 <Plug>lightline#bufferline#delete(9)
-nmap <Leader>d0 <Plug>lightline#bufferline#delete(10)
+nmap <leader>d1 <Plug>lightline#bufferline#delete(1)
+nmap <leader>d2 <Plug>lightline#bufferline#delete(2)
+nmap <leader>d3 <Plug>lightline#bufferline#delete(3)
+nmap <leader>d4 <Plug>lightline#bufferline#delete(4)
+nmap <leader>d5 <Plug>lightline#bufferline#delete(5)
+nmap <leader>d6 <Plug>lightline#bufferline#delete(6)
+nmap <leader>d7 <Plug>lightline#bufferline#delete(7)
+nmap <leader>d8 <Plug>lightline#bufferline#delete(8)
+nmap <leader>d9 <Plug>lightline#bufferline#delete(9)
+nmap <leader>d0 <Plug>lightline#bufferline#delete(10)
 
 nnoremap <silent> <leader><SPACE> :FloatermToggle<CR>
 
 nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>c :BCommits<CR>
+nnoremap <silent> <leader>C :Commits<CR>
+nnoremap <silent> <leader>g :GFiles?<CR>
+nnoremap <silent> <leader>G :GFiles<CR>
 
