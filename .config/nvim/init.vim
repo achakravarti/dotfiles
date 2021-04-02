@@ -2,6 +2,7 @@
 " basic settings
 "
 
+filetype plugin indent on
 set nocompatible
 set encoding=utf-8
 set fileencoding=utf-8
@@ -9,7 +10,11 @@ set ambiwidth=single
 set number
 set nowrap
 set showcmd
-filetype plugin indent on
+set incsearch
+
+if has('nvim')
+	set inccommand=nosplit
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,9 +41,16 @@ Plug 'airblade/vim-rooter'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
@@ -88,18 +100,47 @@ let g:gitgutter_highlight_lines=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " junegunn/fzf.vim settings
 " https://dev.to/zanets/fancy-fzf-on-neovim-41m8
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
 "
 
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
+"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
+let g:fzf_layout = { 'down': '~40%' }
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Keyword'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" itchyny/lightline settings
+" itchyny/lightline related settings
 " https://github.com/itchyny/lightline.vim
 " https://newbilityvery.github.io/2017/08/04/switch-to-lightline/
 " https://github.com/ryanoasis/vim-devicons/blob/master/doc/webdevicons.txt
 "
+
+function! MyFiletype()
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : WebDevIconsGetFileTypeSymbol()
+endfunction
+
+function! MyFileformat()
+	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : WebDevIconsGetFileFormatSymbol()
+endfunction
+
+function! MyGitbranch()
+	return '' . ' ' . FugitiveHead()
+endfunction
 
 let g:lightline = {
   \   'colorscheme': 'nord',
@@ -122,17 +163,72 @@ let g:lightline = {
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 
-function! MyFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : WebDevIconsGetFileTypeSymbol()
-endfunction
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
 
-function! MyFileformat()
-	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : WebDevIconsGetFileFormatSymbol()
-endfunction
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
 
-function! MyGitbranch()
-	return '' . ' ' . FugitiveHead()
-endfunction
+let g:lightline#ale#indicator_checking="\uf110 "
+let g:lightline#ale#indicator_infos="\uf129 "
+let g:lightline#ale#indicator_warnings="\uf071 "
+let g:lightline#ale#indicator_errors="\uf05e "
+let g:lightline#ale#indicator_ok="\uf00c"
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree related configuration
+"
+
+let g:NERDTreeWinPos='left'
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeWinSize=50
+let g:NERDTreeSortOrder=['\/$', '*', '[[extension]]']
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+        \ 'Modified'  :'✹',
+        \ 'Staged'    :'✚',
+        \ 'Untracked' :'✭',
+        \ 'Renamed'   :'➜',
+        \ 'Unmerged'  :'═',
+        \ 'Deleted'   :'✖',
+        \ 'Dirty'     :'✗',
+        \ 'Ignored'   :'☒',
+        \ 'Clean'     :'✔︎',
+        \ 'Unknown'   :'?',
+\ }
+
+
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '✖'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE options
+"
+
+let g:ale_sign_column_always=1
+let g:ale_sign_error="\uf05e"
+let g:ale_sign_warning="\uf071"
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar configuration
+"
+
+let g:tagbar_left=1
+let g:tagbar_vertical=40
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,4 +239,6 @@ endfunction
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>t :FloatermToggle<CR>
+nnoremap <f5> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
 
