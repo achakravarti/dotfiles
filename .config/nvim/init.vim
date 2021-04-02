@@ -242,6 +242,7 @@ let g:lightline#ale#indicator_ok="\uf00c"
 
 let g:tagbar_left=1
 let g:tagbar_vertical=40
+let g:tagbar_map_showproto="K"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -252,21 +253,29 @@ let g:tagbar_vertical=40
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>t :FloatermToggle<CR>
+nnoremap <F2> :copen<bar> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
 
-nnoremap <f5> :copen<bar> :NERDTreeToggle<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
+nnoremap <F9> <C-w>k <C-w>3h
+nnoremap <F10> :NERDTreeFind<CR>
+nnoremap <F11> <C-w>3l <C-w>j
 
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <leader>1 <C-w>k <C-w>3h <C-w>k <C-w>l
+nmap <leader>2 <C-w>k <C-w>3h <C-w>k <C-w>2l
+nmap <leader>3 <C-w>k <C-w>3h <C-w>k <C-w>3l
+nmap <leader>4 <C-w>k <C-w>3h <C-w>k
+nmap <leader>5 :NERDTreeFind<CR>
+nmap <leader>6 <C-w>k <C-w>3h <C-w>k <C-w>3l <C-w>j
+
+nmap <leader>b1 <Plug>lightline#bufferline#go(1)
+nmap <leader>b2 <Plug>lightline#bufferline#go(2)
+nmap <leader>b3 <Plug>lightline#bufferline#go(3)
+nmap <leader>b4 <Plug>lightline#bufferline#go(4)
+nmap <leader>b5 <Plug>lightline#bufferline#go(5)
+nmap <leader>b6 <Plug>lightline#bufferline#go(6)
+nmap <leader>b7 <Plug>lightline#bufferline#go(7)
+nmap <leader>b8 <Plug>lightline#bufferline#go(8)
+nmap <leader>b9 <Plug>lightline#bufferline#go(9)
+nmap <leader>b0 <Plug>lightline#bufferline#go(10)
 
 nmap <Leader>d1 <Plug>lightline#bufferline#delete(1)
 nmap <Leader>d2 <Plug>lightline#bufferline#delete(2)
@@ -278,4 +287,8 @@ nmap <Leader>d7 <Plug>lightline#bufferline#delete(7)
 nmap <Leader>d8 <Plug>lightline#bufferline#delete(8)
 nmap <Leader>d9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>d0 <Plug>lightline#bufferline#delete(10)
+
+nnoremap <silent> <leader><SPACE> :FloatermToggle<CR>
+
+nnoremap <silent> <leader>f :Files<CR>
 
