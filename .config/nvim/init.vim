@@ -48,6 +48,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'wakatime/vim-wakatime'
 
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
