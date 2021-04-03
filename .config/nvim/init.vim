@@ -262,9 +262,9 @@ nnoremap <F11> <C-w>3l <C-w>j
 nmap <leader>1 <C-w>k <C-w>3h <C-w>k <C-w>l
 nmap <leader>2 <C-w>k <C-w>3h <C-w>k <C-w>2l
 nmap <leader>3 <C-w>k <C-w>3h <C-w>k <C-w>3l
-nmap <leader>4 <C-w>k <C-w>3h <C-w>k
-nmap <leader>5 :NERDTreeFind<CR>
-nmap <leader>6 <C-w>k <C-w>3h <C-w>k <C-w>3l <C-w>j
+nmap <leader>` <C-w>k <C-w>3h <C-w>k
+nmap <leader><TAB> :NERDTreeFind<CR>
+nmap <leader>q <C-w>k <C-w>3h <C-w>k <C-w>3l <C-w>j
 
 nmap <leader>b1 <Plug>lightline#bufferline#go(1)
 nmap <leader>b2 <Plug>lightline#bufferline#go(2)
@@ -294,7 +294,7 @@ nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>F :Files ~<CR>
 nnoremap <silent> <leader>c :BCommits<CR>
 nnoremap <silent> <leader>C :Commits<CR>
-nnoremap <silent> <leader>g :GFiles?<CR>
-nnoremap <silent> <leader>G :GFiles<CR>
-nnoremap <silent> <leader>s :Rg<CR>
+nnoremap <silent> <leader>s :GFiles?<CR>
+nnoremap <silent> <leader>S :GFiles<CR>
+nnoremap <silent> <leader>g :Rg<CR>
 
