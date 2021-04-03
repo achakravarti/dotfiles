@@ -291,8 +291,10 @@ nmap <leader>d0 <Plug>lightline#bufferline#delete(10)
 nnoremap <silent> <leader><SPACE> :FloatermToggle<CR>
 
 nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>F :Files ~<CR>
 nnoremap <silent> <leader>c :BCommits<CR>
 nnoremap <silent> <leader>C :Commits<CR>
 nnoremap <silent> <leader>g :GFiles?<CR>
 nnoremap <silent> <leader>G :GFiles<CR>
+nnoremap <silent> <leader>s :Rg<CR>
 
