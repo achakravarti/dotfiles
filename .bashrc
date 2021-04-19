@@ -5,7 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='exa --icons --group-directories-first --sort=extension'
+alias ll='exa --icons --group-directories-first --sort=extension -lha'
 alias grep='grep -n --color=auto'
 alias mutt='neomutt'
 alias abook='abook --config $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook'
