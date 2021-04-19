@@ -197,7 +197,7 @@ let g:NERDTreeWinPos='left'
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeWinSize=50
 let g:NERDTreeSortOrder=['\/$', '*', '[[extension]]']
-
+let NERDTreeIgnore=['\.o$', '\~$', '\.gcno$', '\.gcda$']
 let g:NERDTreeGitStatusIndicatorMapCustom = {
         \ 'Modified'  :'✹',
         \ 'Staged'    :'✚',
