@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='exa --icons --group-directories-first --sort=extension'
-alias ll='exa --icons --group-directories-first --sort=extension -lha'
+alias ll='exa --icons --color=always --group-directories-first --sort=extension -lhaR | less -r'
 alias grep='grep -n --color=auto'
 alias mutt='neomutt'
 alias abook='abook --config $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook'
