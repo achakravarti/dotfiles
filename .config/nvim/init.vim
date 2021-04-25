@@ -260,13 +260,15 @@ nnoremap <F9> <C-w>k <C-w>3h
 nnoremap <F10> :NERDTreeFind<CR>
 nnoremap <F11> <C-w>3l <C-w>j
 
+nmap <leader><TAB> <C-w>w
 nmap <leader>1 <C-w>k <C-w>3h <C-w>k <C-w>l
 nmap <leader>2 <C-w>k <C-w>3h <C-w>k <C-w>2l
 nmap <leader>3 <C-w>k <C-w>3h <C-w>k <C-w>3l
-nmap <leader>` <C-w>k <C-w>3h <C-w>k
-nmap <leader><TAB> :NERDTreeFind<CR>
-nmap <leader>q <C-w>k <C-w>3h <C-w>k <C-w>3l <C-w>j
+nmap <leader>q <C-w>k <C-w>3h <C-w>k
+nmap <leader>w :NERDTreeFind<CR>
+nmap <leader>e <C-w>k <C-w>3h <C-w>k <C-w>3l <C-w>j
 
+nmap <leader>b<TAB> :bnext<CR>
 nmap <leader>b1 <Plug>lightline#bufferline#go(1)
 nmap <leader>b2 <Plug>lightline#bufferline#go(2)
 nmap <leader>b3 <Plug>lightline#bufferline#go(3)
