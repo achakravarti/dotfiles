@@ -13,6 +13,7 @@ alias abook='abook --config $HOME/.config/abook/abookrc --datafile $HOME/.config
 alias ncmpcpp='ncmpcpp -b $HOME/.config/ncmpcpp/bindings'
 alias vim='nvim'
 alias kssh='kitty +kitten ssh'
+alias clear='clear && neofetch'
 
 
 # https://wiki.archlinux.org/index.php/Color_output_in_console#man
@@ -31,4 +32,4 @@ source $HOME/.config/promptline.sh
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
-archey3
+neofetch
