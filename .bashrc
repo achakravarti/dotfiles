@@ -12,7 +12,7 @@ alias mutt='neomutt'
 alias abook='abook --config $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook'
 alias ncmpcpp='ncmpcpp -b $HOME/.config/ncmpcpp/bindings'
 alias vim='nvim'
-alias ssh='kitty +kitten ssh'
+alias kssh='kitty +kitten ssh'
 
 
 # https://wiki.archlinux.org/index.php/Color_output_in_console#man
