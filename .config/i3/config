@@ -175,7 +175,7 @@ bindsym $mod+Tab workspace back_and_forth
 
 assign [class="firefoxdeveloperedition"] $ws1
 assign [class="Gvim"] $ws4
-assign [class="Signal"] $ws38
+assign [class="Signal"] $ws8
 assign [class="Emacs"] $ws9
 assign [class="calibre"] $ws2
 
