@@ -27,8 +27,13 @@ man() {
     command man "$@"
 }
 
-PS1='[\u@\h \W]\$ '
-source $HOME/.config/promptline.sh
+#PS1='[\u@\h \W]\$ '
+#source $HOME/.config/promptline.sh
+
+source $HOME/.config/git-prompt.sh
+#PS1=' \[\e[00;34m\]λ \W\[\e[0m\] '
+PS1=' \[\e[00;34m\]λ \W$(__git_ps1 " ( %s)")\[\e[0m\] '
+
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
