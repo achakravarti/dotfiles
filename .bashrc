@@ -31,7 +31,7 @@ man() {
 #source $HOME/.config/promptline.sh
 
 source $HOME/.config/git-prompt.sh
-PS1='\n \[\e[00;34m\]┌─[\t] [\u@\H] \w$(__git_ps1 " ( %s)")\n └─> λ\[\e[0m\] '
+PS1='\n \[\e[00;34m\]┌─(\t)-(\u@\H)-(\w)$(__git_ps1 "-( %s)")\n └─> λ\[\e[0m\] '
 
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
