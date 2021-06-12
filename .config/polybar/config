@@ -1,0 +1,592 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+alert 		= #bd2c40
+background 	= #222
+background-alt	= #444
+foreground 	= #dfdfdf
+foreground-alt 	= #555
+primary 	= #ffb52a
+secondary 	= #e60053
+
+
+[fonts]
+awesome	= fontawesome:pixelsize=10;1
+fixed 	= fixed:pixelsize=8;1
+hack 	= hack:pixelsize=8;1
+siji 	= siji:pixelsize=10;1
+unifont = unifont:fontformat=truetype:size=8:antialias=false;0
+weather = weathericons:pixelsize=12;1
+dejavu  = dejavusans:pixelsize=10;1
+emoji    = Noto Emoji:scale=15:antialias=false;0
+
+
+
+[bar/center]
+font-0 = ${fonts.dejavu}
+font-1 = ${fonts.awesome}
+font-2 = ${fonts.weather}
+font-3 = ${fonts.emoji}
+
+monitor = ${env:MONITOR:VGA-1-1}
+bottom = true
+width = 100%
+height = 24 
+;offset-x = 1%
+;offset-y = 1%
+;radius = 0.0
+;fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+modules-left 	= i3 xkeyboard info-hackspeed
+modules-center	= tz-cdt tz-edt tz-utc tz-gmt tz-cest
+modules-right   = polypomo openweathermap-fullfeatured date
+
+;tray-position = right
+;tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[bar/right]
+font-0 = ${fonts.dejavu}
+font-1 = ${fonts.unifont}
+font-2 = ${fonts.siji}
+font-3 = ${fonts.awesome}
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+monitor = ${env:MONITOR:HDMI-1}
+bottom = true
+height = 20
+
+modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+modules-center = filesystem memory cpu system-cpu-temppercore
+modules-right = eth vpn vpn-anyconnect-status powermenu
+
+tray-position = right
+tray-padding = 9
+tray-transparent = false
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.background}
+wm-restack = i3
+
+
+[bar/left]
+font-0 = ${fonts.hack}
+font-1 = ${fonts.unifont}
+font-2 = ${fonts.awesome}
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+monitor = ${env:MONITOR:DVI-D-1}
+bottom = true
+height = 20
+
+modules-left = i3 mpd
+;modules-center = 
+modules-right = alsa pulseaudio
+
+
+
+
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+;blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted =  %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+;[module/mpd]
+;type = internal/mpd
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+;
+;icon-prev = Prev
+;icon-stop = Stop
+;icon-play = Play
+;icon-pause = Pause
+;icon-next = Next
+;
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+
+;https://github.com/jaagr/dots/blob/master/.local/etc/themer/themes/space/polybar
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+;https://github.com/jaagr/dots/blob/master/.local/etc/themer/themes/space/polybar 
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+label = %percentage:2%% 
+format = <label> <ramp-coreload>
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #4bffdc
+label = %percentage_used%%
+format = <label> <bar-used>
+bar-used-width = 30
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = |
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = "  "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-disconnected = "  "
+
+label-connected = %ifname% %local_ip%  %downspeed%  %upspeed%
+label-disconnected = %ifname% disconnected
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+
+[module/vpn]
+type = internal/network
+interface = proton0
+interval = 3.0
+format-connected-underline = #555555
+format-connected-prefix = "  "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-disconnected = "  "
+label-connected = %ifname% %local_ip% 
+label-disconnected = %ifname% disconnected
+
+
+
+[module/date]
+date 				= %a, %b %d %Y
+date-alt 			= %Y-%m-%d
+format-prefix 			= " "
+format-prefix-foreground	= ${colors.foreground}
+format-underline 		= #0a6cf5
+interval 			= 1
+label 				= %date% %time%
+time 				= %H:%M
+time-alt 			= %H:%M:%S
+type 				= internal/date
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = "  mute"
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = mute
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = "  "
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+# https://github.com/plybar/polybar/issues/557
+[module/tz-cest]
+exec 	 = TZ=Europe/Paris date +"%Z: %H:%M%z"
+interval = 30
+type     = custom/script
+
+[module/tz-utc]
+exec 	 = date -u +"%Z: %H:%M"
+interval = 30
+type     = custom/script
+
+[module/tz-gmt]
+exec 	 = TZ=Europe/London date +"%Z: %H:%M%z"
+interval = 30
+type     = custom/script
+
+[module/tz-cdt]
+exec     = TZ=America/Chicago date +"%Z: %H:%M%z"
+interval = 30
+type     = custom/script
+
+[module/tz-edt]
+exec 	 = TZ=America/Toronto date +"%Z: %H:%M%z"
+interval = 30
+type     = custom/script
+
+
+;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/system-cpu-temppercore
+[module/system-cpu-temppercore]
+type = custom/script
+exec = ~/.config/polybar/system-cpu-temppercore.sh
+interval = 60
+format-prefix = "  "
+
+;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed
+[module/info-hackspeed]
+type = custom/script
+exec = ~/.config/polybar/info-hackspeed.sh
+tail = true
+
+;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/vpn-anyconnect-status
+[module/vpn-anyconnect-status]
+type = custom/script
+exec = ~/.config/polybar/vpn-anyconnect-status.sh
+interval = 5
+
+;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/updates-pacman-aurhelper
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/updates-pacman-aurhelper.sh
+interval = 600
+format-prefix = "  "
+
+
+[module/info-ssh-sessions]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-ssh-sessions.sh
+interval = 5
+format-prefix = "  "
+
+
+; https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/openweathermap-fullfeatured1
+[module/openweathermap-fullfeatured]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 3
+
+; https://github.com/unode/polypomo
+[module/polypomo]
+type = custom/script
+exec = ~/.config/polybar/scripts/polypomo.py --worktime 1500 --breaktime 300
+tail = true
+label = %output%
+click-left = ~/.config/polybar/scripts/polypomo.py toggle
+click-right = ~/.config/polybar/scripts/olypomo.py end
+click-middle = ~/.config/polybar/scripts/polypomo.py lock
+scroll-up = ~/.config/polybar/scripts/polypomo.py time +60
+scroll-down = ~/.config/polybar/scripts/polypomo.py time -60
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+
+
+; vim:ft=dosini
