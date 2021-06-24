@@ -37,9 +37,42 @@ dejavu  = dejavusans:pixelsize=10;1
 emoji    = Noto Emoji:scale=15:antialias=false;0
 
 
+[bar/left]
+;font-0 = ${fonts.hack}
+;font-1 = ${fonts.unifont}
+;font-2 = ${fonts.awesome}
+
+font-0 = ${fonts.hack}
+font-1 = ${fonts.unifont}
+font-2 = ${fonts.siji}
+font-3 = ${fonts.awesome}
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+monitor = ${env:MONITOR:DVI-D-1}
+bottom = true
+height = 20
+
+;modules-left = i3 mpd
+;modules-center = 
+;modules-right = alsa pulseaudio
+modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+modules-center = filesystem memory cpu system-cpu-temppercore
+modules-right = eth vpn vpn-anyconnect-status powermenu
+
+wm-restack = i3
+
 
 [bar/center]
-font-0 = ${fonts.dejavu}
+font-0 = ${fonts.hack}
 font-1 = ${fonts.awesome}
 font-2 = ${fonts.weather}
 font-3 = ${fonts.emoji}
@@ -89,12 +122,26 @@ modules-right   = polypomo openweathermap-fullfeatured date
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+tray-position = right
+tray-padding = 9
+tray-transparent = false
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.background}
+wm-restack = i3
+
 
 [bar/right]
-font-0 = ${fonts.dejavu}
+;font-0 = ${fonts.dejavu}
+;font-1 = ${fonts.unifont}
+;font-2 = ${fonts.siji}
+;font-3 = ${fonts.awesome}
+
+font-0 = ${fonts.hack}
 font-1 = ${fonts.unifont}
-font-2 = ${fonts.siji}
-font-3 = ${fonts.awesome}
+font-2 = ${fonts.awesome}
 
 padding-left = 0
 padding-right = 0
@@ -110,47 +157,22 @@ monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 height = 20
 
-modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
-modules-center = filesystem memory cpu system-cpu-temppercore
-modules-right = eth vpn vpn-anyconnect-status powermenu
-
-tray-position = right
-tray-padding = 9
-tray-transparent = false
-tray-offset-y = 0%
-tray-offset-x = 0%
-tray-maxsize = 18
-tray-detached = false
-tray-background = ${colors.background}
-wm-restack = i3
-
-
-[bar/left]
-font-0 = ${fonts.hack}
-font-1 = ${fonts.unifont}
-font-2 = ${fonts.awesome}
-
-padding-left = 0
-padding-right = 0
-module-margin-left = 1
-module-margin-right = 1
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-
-monitor = ${env:MONITOR:DVI-D-1}
-bottom = true
-height = 20
-
+;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+;modules-center = filesystem memory cpu system-cpu-temppercore
+;modules-right = eth vpn vpn-anyconnect-status powermenu
 modules-left = i3 mpd
-;modules-center = 
+modules-center = 
 modules-right = alsa pulseaudio
 
-
-
-
+;tray-position = right
+;tray-padding = 9
+;tray-transparent = false
+;tray-offset-y = 0%
+;tray-offset-x = 0%
+;tray-maxsize = 18
+;tray-detached = false
+;tray-background = ${colors.background}
+wm-restack = i3
 
 
 [module/xwindow]
