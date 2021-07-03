@@ -299,5 +299,8 @@ nnoremap <silent> <leader>c :BCommits<CR>
 nnoremap <silent> <leader>C :Commits<CR>
 nnoremap <silent> <leader>s :GFiles?<CR>
 nnoremap <silent> <leader>S :GFiles<CR>
-nnoremap <silent> <leader>g :Rg<CR>
+nnoremap <silent> <leader>rg :Rg<CR>
+
+noremap <silent> <leader>g :Gstatus<CR>
+noremap <silent> <leader>p :Git push<CR>
 
