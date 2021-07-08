@@ -26,7 +26,7 @@ set textwidth=80
 set colorcolumn=+1
 autocmd filetype c,cpp setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
 autocmd filetype javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd filetype html,htmldjango,latex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd filetype html,htmldjango,latex,tex setlocal tabstop=2 shiftwidth=2 expandtab
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
