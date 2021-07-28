@@ -36,92 +36,168 @@ weather = weathericons:pixelsize=12;1
 dejavu  = dejavusans:pixelsize=10;1
 emoji    = Noto Emoji:scale=15:antialias=false;0
 
+;[bar/left]
+;;font-0 = ${fonts.hack}
+;;font-1 = ${fonts.unifont}
+;;font-2 = ${fonts.awesome}
+;
+;font-0 = ${fonts.hack}
+;font-1 = ${fonts.unifont}
+;font-2 = ${fonts.siji}
+;font-3 = ${fonts.awesome}
+;
+;padding-left = 0
+;padding-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+;
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+;
+;line-size = 2
+;
+;monitor = ${env:MONITOR:DVI-D-1}
+;bottom = true
+;height = 20
+;
+;;modules-left = i3 mpd
+;;modules-center = 
+;;modules-right = alsa pulseaudio
+;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+;modules-center = filesystem memory cpu system-cpu-temppercore
+;modules-right = eth vpn vpn-anyconnect-status powermenu
+;
+;wm-restack = i3
 
-[bar/left]
+;[bar/center]
+;font-0 = ${fonts.hack}
+;font-1 = ${fonts.awesome}
+;font-2 = ${fonts.weather}
+;font-3 = ${fonts.emoji}
+;
+;monitor = ${env:MONITOR:VGA-1-1}
+;bottom = true
+;width = 100%
+;height = 24 
+;;offset-x = 1%
+;;offset-y = 1%
+;;radius = 0.0
+;;fixed-center = false
+;
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+;
+;line-size = 2
+;line-color = #f00
+;
+;border-size = 4
+;border-color = #00000000
+;
+;padding-left = 0
+;padding-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+;
+;modules-left 	= i3 xkeyboard info-hackspeed
+;modules-center	= tz-cdt tz-edt tz-utc tz-gmt tz-cest
+;modules-right   = polypomo openweathermap-fullfeatured date
+;
+;;tray-position = right
+;;tray-padding = 2
+;;tray-background = #0063ff
+;;
+;;wm-restack = bspwm
+;;wm-restack = i3
+;
+;;override-redirect = true
+;
+;;scroll-up = bspwm-desknext
+;;scroll-down = bspwm-deskprev
+;
+;;scroll-up = i3wm-wsnext
+;;scroll-down = i3wm-wsprev
+;
+;cursor-click = pointer
+;cursor-scroll = ns-resize
+;
+;tray-position = right
+;tray-padding = 9
+;tray-transparent = false
+;tray-offset-y = 0%
+;tray-offset-x = 0%
+;tray-maxsize = 18
+;tray-detached = false
+;tray-background = ${colors.background}
+;wm-restack = i3
+;
+;
+;[bar/right]
+;;font-0 = ${fonts.dejavu}
+;;font-1 = ${fonts.unifont}
+;;font-2 = ${fonts.siji}
+;;font-3 = ${fonts.awesome}
+;
 ;font-0 = ${fonts.hack}
 ;font-1 = ${fonts.unifont}
 ;font-2 = ${fonts.awesome}
-
-font-0 = ${fonts.hack}
-font-1 = ${fonts.unifont}
-font-2 = ${fonts.siji}
-font-3 = ${fonts.awesome}
-
-padding-left = 0
-padding-right = 0
-module-margin-left = 1
-module-margin-right = 1
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-
-monitor = ${env:MONITOR:DVI-D-1}
-bottom = true
-height = 20
-
+;
+;padding-left = 0
+;padding-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+;
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+;
+;line-size = 2
+;
+;monitor = ${env:MONITOR:HDMI-1}
+;bottom = true
+;height = 20
+;
+;;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+;;modules-center = filesystem memory cpu system-cpu-temppercore
+;;modules-right = eth vpn vpn-anyconnect-status powermenu
 ;modules-left = i3 mpd
 ;modules-center = 
 ;modules-right = alsa pulseaudio
-modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
-modules-center = filesystem memory cpu system-cpu-temppercore
-modules-right = eth vpn vpn-anyconnect-status powermenu
+;
+;;tray-position = right
+;;tray-padding = 9
+;;tray-transparent = false
+;;tray-offset-y = 0%
+;;tray-offset-x = 0%
+;;tray-maxsize = 18
+;;tray-detached = false
+;;tray-background = ${colors.background}
+;wm-restack = i3
 
-wm-restack = i3
 
 
-[bar/center]
+[bar/left]
 font-0 = ${fonts.hack}
 font-1 = ${fonts.awesome}
 font-2 = ${fonts.weather}
 font-3 = ${fonts.emoji}
-
 monitor = ${env:MONITOR:VGA-1-1}
 bottom = true
 width = 100%
 height = 24 
-;offset-x = 1%
-;offset-y = 1%
-;radius = 0.0
-;fixed-center = false
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
 line-size = 2
 line-color = #f00
-
 border-size = 4
 border-color = #00000000
-
 padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
-
-modules-left 	= i3 xkeyboard info-hackspeed
+modules-left 	= i3 openweathermap-fullfeatured
 modules-center	= tz-cdt tz-edt tz-utc tz-gmt tz-cest
-modules-right   = polypomo openweathermap-fullfeatured date
-
-;tray-position = right
-;tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
+modules-right   = polypomo date
 cursor-click = pointer
 cursor-scroll = ns-resize
-
 tray-position = right
 tray-padding = 9
 tray-transparent = false
@@ -133,46 +209,47 @@ tray-background = ${colors.background}
 wm-restack = i3
 
 
-[bar/right]
-;font-0 = ${fonts.dejavu}
-;font-1 = ${fonts.unifont}
-;font-2 = ${fonts.siji}
-;font-3 = ${fonts.awesome}
-
+[bar/center]
 font-0 = ${fonts.hack}
 font-1 = ${fonts.unifont}
 font-2 = ${fonts.awesome}
-
 padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
 line-size = 2
-
 monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 height = 20
-
-;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
-;modules-center = filesystem memory cpu system-cpu-temppercore
-;modules-right = eth vpn vpn-anyconnect-status powermenu
-modules-left = i3 mpd
-modules-center = 
+modules-left 	= i3 xkeyboard info-hackspeed
+modules-center = mpd
 modules-right = alsa pulseaudio
-
-;tray-position = right
-;tray-padding = 9
-;tray-transparent = false
-;tray-offset-y = 0%
-;tray-offset-x = 0%
-;tray-maxsize = 18
-;tray-detached = false
-;tray-background = ${colors.background}
 wm-restack = i3
+
+
+[bar/right]
+font-0 = ${fonts.hack}
+font-1 = ${fonts.unifont}
+font-2 = ${fonts.siji}
+font-3 = ${fonts.awesome}
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 2
+monitor = ${env:MONITOR:DVI-D-1}
+bottom = true
+height = 20
+modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
+modules-center = filesystem memory cpu system-cpu-temppercore
+modules-right = eth vpn vpn-anyconnect-status powermenu
+wm-restack = i3
+
+
 
 
 [module/xwindow]
