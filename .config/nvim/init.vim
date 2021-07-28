@@ -26,7 +26,7 @@ set textwidth=80
 set colorcolumn=+1
 autocmd filetype c,cpp setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
 autocmd filetype javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd filetype html,htmldjango,latex,tex setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd filetype html,htmldjango,latex,tex,plaintex setlocal tabstop=2 shiftwidth=2 expandtab
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -58,6 +58,8 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ryanoasis/vim-devicons'
+
+Plug 'chrisbra/unicode.vim'
 
 call plug#end()
 
