@@ -22,6 +22,8 @@ endif
 " indentation settings
 "
 
+set autoindent
+set smartindent
 set textwidth=80
 set colorcolumn=+1
 autocmd filetype c,cpp setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
