@@ -254,5 +254,5 @@ exec_always picom -f
 #https://github.com/polybar/polybar/wiki
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always feh --recursive --bg-scale -- randomize ~/pub/wall/* ~/pub/wall/* ~/pub/wall/*
+exec_always feh --recursive --bg-scale --randomize ~/media/wall/* ~/media/wall/* ~/media/wall/*
 
