@@ -60,6 +60,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'lifepillar/pgsql.vim'
 
 Plug 'chrisbra/unicode.vim'
 
@@ -78,6 +79,8 @@ syntax on
 set hlsearch
 set cursorline
 hi cursorline cterm=NONE ctermbg=254 ctermfg=NONE
+
+let g:sql_type_default = 'pgsql'
 
 if has('termguicolors')
     set termguicolors
