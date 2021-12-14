@@ -26,8 +26,8 @@ set autoindent
 set smartindent
 set textwidth=80
 set colorcolumn=+1
-autocmd filetype c,cpp setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
-autocmd filetype javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd filetype c setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
+autocmd filetype cpp,javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd filetype html,htmldjango,latex,tex,plaintex setlocal tabstop=2 shiftwidth=2 expandtab
 
 
@@ -300,14 +300,15 @@ nmap <leader>d0 <Plug>lightline#bufferline#delete(10)
 
 nnoremap <silent> <leader><SPACE> :FloatermToggle<CR>
 
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>F :Files ~<CR>
+nnoremap <silent> <leader>c :Buffers<CR>
 nnoremap <silent> <leader>c :BCommits<CR>
-nnoremap <silent> <leader>C :Commits<CR>
+nnoremap <silent> <leader>cc :Commits<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>ff :Files ~<CR>
+nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <silent> <leader>s :GFiles?<CR>
 nnoremap <silent> <leader>S :GFiles<CR>
-nnoremap <silent> <leader>rg :Rg<CR>
 
-noremap <silent> <leader>g :Gstatus<CR>
-noremap <silent> <leader>p :Git push<CR>
+noremap <silent> <leader>g :Git<CR>
+noremap <silent> <leader>gp :Git push<CR>
 
