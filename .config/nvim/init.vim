@@ -27,7 +27,7 @@ set smartindent
 set textwidth=80
 set colorcolumn=+1
 autocmd filetype c setlocal ts=8 softtabstop=8 shiftwidth=8 expandtab
-autocmd filetype cpp,javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd filetype sql,cpp,javascript,python,css setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd filetype cucumber,html,htmldjango,latex,tex,plaintex setlocal tabstop=2 shiftwidth=2 expandtab
 
 
@@ -48,7 +48,7 @@ Plug 'dense-analysis/ale'
 
 "Plug 'preservim/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'preservim/tagbar'
+"Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'wakatime/vim-wakatime'
 
@@ -58,19 +58,24 @@ Plug 'wakatime/vim-wakatime'
 "Plug 'mengelbrecht/lightline-bufferline'
 
 Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
+"Plug 'shaunsingh/nord.nvim'
+"Plug 'ayu-theme/ayu-vim'
+Plug 'Shatur/neovim-ayu'
 "Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/pgsql.vim'
+Plug 'jsborjesson/vim-uppercase-sql'
 
 Plug 'chrisbra/unicode.vim'
 
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'feline-nvim/feline.nvim'
+"Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'feline-nvim/feline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'goolord/alpha-nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'liuchengxu/vista.vim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -79,6 +84,11 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'akinsho/bufferline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 
 call plug#end()
@@ -112,6 +122,7 @@ if strftime("%H") >= 5 && strftime("%H") <= 17
     	colorscheme ayu
 else
     	set background=dark
+	let g:nord_italic = v:false
     	colorscheme nord
 endif
   
@@ -275,9 +286,9 @@ let g:ale_sign_warning="\uf071"
 " Tagbar configuration
 "
 
-let g:tagbar_left=1
-let g:tagbar_vertical=40
-let g:tagbar_map_showproto="K"
+"let g:tagbar_right=1
+"let g:tagbar_vertical=40
+"let g:tagbar_map_showproto="K"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -288,10 +299,11 @@ let g:tagbar_map_showproto="K"
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nnoremap <F2> :copen<bar> :NvimTreeOpen<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
+"nnoremap <F2> :copen<bar> :NvimTreeOpen<CR> :TagbarToggle<CR> <C-w>l :vsp<CR> :vsp<CR>
+nnoremap <F2> :copen<bar> :NeoTreeShow<CR> :Vista<CR> <C-w>l :vsp<CR> :vsp<CR> :vsp<CR>
 
 nnoremap <F9> <C-w>k <C-w>3h
-nnoremap <F10> :NvimTreeFindFile<CR>
+"nnoremap <F10> :NvimTreeFindFile<CR>
 nnoremap <F11> <C-w>3l <C-w>j
 
 nmap <leader><TAB> <C-w>w
@@ -344,24 +356,6 @@ noremap <silent> <leader>gp :Git push<CR>
 " Nvim Web Devicons
 " "
 
-lua << EOF
-require'nvim-web-devicons'.setup {
- -- your personnal icons can go here (to override)
- -- you can specify color or cterm_color instead of specifying both of them
- -- DevIcon will be appended to `name`
- override = {
-  zsh = {
-    icon = "",
-    color = "#428850",
-    cterm_color = "65",
-    name = "Zsh"
-  }
- };
- -- globally enable default icons (default to false)
- -- will get overriden by `get_icons` option
- default = true;
-}
-EOF
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -369,73 +363,11 @@ EOF
 " "
 
 lua << EOF
-require'feline'.setup {}
+--require'feline'.setup {}
+require('lualine').setup()
 EOF
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nvim Tree
-" "
-
-" vimrc
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
-let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath.
-"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
-"but this will not work when you set indent_markers (because of UI conflict)
-
-" default will show icon by default if no icon is provided
-" default shows no icon by default
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
-
 set termguicolors " this variable must be enabled for colors to be applied properly
-
-" a list of groups can be found at `:help nvim_tree_highlight`
-highlight NvimTreeFolderIcon guibg=blue
 
 
 ""
@@ -452,7 +384,144 @@ EOF
 
 
 lua require('plugins/alpha-nvim')
-lua require('plugins/nvim-tree')
 lua require('plugins/nvim-lspconfig')
 lua require('plugins/nvim-cmp')
+lua require('plugins/vista')
+
+
+lua << EOF
+require("neo-tree").setup({
+        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+        popup_border_style = "rounded",
+        enable_git_status = true,
+        enable_diagnostics = true,
+        default_component_configs = {
+          indent = {
+            indent_size = 2,
+            padding = 1, -- extra padding on left hand side
+            with_markers = true,
+            indent_marker = "│",
+            last_indent_marker = "└",
+            highlight = "NeoTreeIndentMarker",
+          },
+          icon = {
+            folder_closed = "",
+            folder_open = "",
+            folder_empty = "ﰊ",
+            default = "*",
+          },
+          name = {
+            trailing_slash = false,
+            use_git_status_colors = true,
+          },
+          git_status = {
+            highlight = "NeoTreeDimText", -- if you remove this the status will be colorful
+          },
+        },
+        filesystem = {
+          filters = { --These filters are applied to both browsing and searching
+            show_hidden = true,
+            respect_gitignore = true,
+          },
+          follow_current_file = true, -- This will find and focus the file in the active buffer every
+                                       -- time the current file is changed while the tree is open.
+          use_libuv_file_watcher = false, -- This will use the OS level file watchers
+                                          -- to detect changes instead of relying on nvim autocmd events.
+          hijack_netrw_behavior = -- "open_default", -- netrw disabled, opening a directory opens neo-tree
+                                                  -- in whatever position is specified in window.position
+                                "open_split",  -- netrw disabled, opening a directory opens within the
+                                                  -- window like netrw would, regardless of window.position
+                                -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+          window = {
+            position = "left",
+            width = 40,
+            mappings = {
+              ["<2-LeftMouse>"] = "open",
+              ["<cr>"] = "open",
+              ["S"] = "open_split",
+              ["s"] = "open_vsplit",
+              ["c"] = "close_node",
+              ["<bs>"] = "navigate_up",
+              ["."] = "set_root",
+              ["H"] = "toggle_hidden",
+              ["I"] = "toggle_gitignore",
+              ["R"] = "refresh",
+              ["/"] = "fuzzy_finder",
+              --["/"] = "filter_as_you_type", -- this was the default until v1.28
+              --["/"] = "none" -- Assigning a key to "none" will remove the default mapping
+              ["f"] = "filter_on_submit",
+              ["<c-x>"] = "clear_filter",
+              ["a"] = "add",
+              ["d"] = "delete",
+              ["r"] = "rename",
+              ["C"] = "copy_to_clipboard",
+              ["x"] = "cut_to_clipboard",
+              ["p"] = "paste_from_clipboard",
+              ["m"] = "move", -- takes text input for destination
+              ["q"] = "close_window",
+            }
+          }
+        },
+        buffers = {
+          show_unloaded = true,
+          window = {
+            position = "left",
+            mappings = {
+              ["<2-LeftMouse>"] = "open",
+              ["<cr>"] = "open",
+              ["S"] = "open_split",
+              ["s"] = "open_vsplit",
+              ["<bs>"] = "navigate_up",
+              ["."] = "set_root",
+              ["R"] = "refresh",
+              ["a"] = "add",
+              ["d"] = "delete",
+              ["r"] = "rename",
+              ["c"] = "copy_to_clipboard",
+              ["x"] = "cut_to_clipboard",
+              ["p"] = "paste_from_clipboard",
+              ["bd"] = "buffer_delete",
+            }
+          },
+        },
+        git_status = {
+          window = {
+            position = "float",
+            mappings = {
+              ["<2-LeftMouse>"] = "open",
+              ["<cr>"] = "open",
+              ["S"] = "open_split",
+              ["s"] = "open_vsplit",
+              ["C"] = "close_node",
+              ["R"] = "refresh",
+              ["d"] = "delete",
+              ["r"] = "rename",
+              ["c"] = "copy_to_clipboard",
+              ["x"] = "cut_to_clipboard",
+              ["p"] = "paste_from_clipboard",
+              ["A"]  = "git_add_all",
+              ["gu"] = "git_unstage_file",
+              ["ga"] = "git_add_file",
+              ["gr"] = "git_revert_file",
+              ["gc"] = "git_commit",
+              ["gp"] = "git_push",
+              ["gg"] = "git_commit_and_push",
+            }
+          }
+        }
+      })
+EOF
+
+lua << EOF
+require('bufferline').setup{}
+EOF
+
+lua << EOF
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
 
