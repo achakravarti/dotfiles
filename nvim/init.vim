@@ -75,7 +75,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'goolord/alpha-nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'liuchengxu/vista.vim'
+"Plug 'liuchengxu/vista.vim'
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'folke/zen-mode.nvim'
+Plug 'folke/twilight.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -386,7 +389,8 @@ EOF
 lua require('plugins/alpha-nvim')
 lua require('plugins/nvim-lspconfig')
 lua require('plugins/nvim-cmp')
-lua require('plugins/vista')
+"lua require('plugins/vista')
+lua require('plugins/symbols-outline')
 
 
 lua << EOF
@@ -524,4 +528,19 @@ require('nvim-treesitter.configs').setup {
 }
 EOF
 
+lua << EOF
+  require("zen-mode").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+lua << EOF
+  require("twilight").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 

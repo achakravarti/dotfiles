@@ -19,8 +19,10 @@ g.vista_icon_indent = '["╰─▸ ", "├─▸ "]'
 --- See all the avaliable executives via `:echo g:vista#executives`.
 g.vista_default_executive = 'ctags'
 
+g.vista_fzf_preview = 'right:50%'
+
 cmd [[let g:vista_sidebar_position='vertical botright']]
-cmd [[g:vista_sidebar_width=40]]
+cmd [[let g:vista_sidebar_width=60]]
 --cmd [[let g:vista_sidebar_open_cmd = '40split']]
 
 -- Ensure you have installed some decent font to show these pretty symbols,
