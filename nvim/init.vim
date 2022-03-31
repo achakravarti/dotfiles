@@ -544,3 +544,7 @@ lua << EOF
   }
 EOF
 
+lua << EOF
+	require'lspconfig'.sqlls.setup{}
+EOF
+
