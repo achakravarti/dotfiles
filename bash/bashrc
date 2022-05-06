@@ -17,15 +17,17 @@ alias clear='clear && neofetch'
 
 
 # https://wiki.archlinux.org/index.php/Color_output_in_console#man
-man() {
-    LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[01;44;33m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    command man "$@"
-}
+#man() {
+#    LESS_TERMCAP_md=$'\e[01;31m' \
+#    LESS_TERMCAP_me=$'\e[0m' \
+#    LESS_TERMCAP_se=$'\e[0m' \
+#    LESS_TERMCAP_so=$'\e[01;44;33m' \
+#    LESS_TERMCAP_ue=$'\e[0m' \
+#    LESS_TERMCAP_us=$'\e[01;32m' \
+#    command man "$@"
+#}
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
 
 #PS1='[\u@\h \W]\$ '
 #source $HOME/.config/promptline.sh
@@ -39,3 +41,9 @@ source /usr/share/fzf/key-bindings.bash
 neofetch
 
 eval "$(thefuck --alias)"
+
+PATH="/home/abhishek/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/abhishek/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/abhishek/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/abhishek/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/abhishek/perl5"; export PERL_MM_OPT;
