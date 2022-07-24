@@ -32,8 +32,8 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 #PS1='[\u@\h \W]\$ '
 #source $HOME/.config/promptline.sh
 
-source $HOME/.config/git-prompt.sh
-PS1='\n \[\e[00;34m\]┌─(\t)-(\u@\H)-(\w)$(__git_ps1 "-( %s)")\n └─> λ\[\e[0m\] '
+#source $HOME/.config/git-prompt.sh
+#PS1='\n \[\e[00;34m\]┌─(\t)-(\u@\H)-(\w)$(__git_ps1 "-( %s)")\n └─> λ\[\e[0m\] '
 
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
@@ -47,3 +47,6 @@ PERL5LIB="/home/abhishek/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5
 PERL_LOCAL_LIB_ROOT="/home/abhishek/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/abhishek/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/abhishek/perl5"; export PERL_MM_OPT;
+
+eval "$(oh-my-posh init bash --config /usr/share/oh-my-posh/themes/night-owl.omp.json)"
+#eval "$(oh-my-posh init bash)"

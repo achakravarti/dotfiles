@@ -93,6 +93,8 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
+Plug 'nanotee/sqls.nvim'
+
 
 call plug#end()
 
@@ -545,6 +547,10 @@ lua << EOF
 EOF
 
 lua << EOF
-	require'lspconfig'.sqlls.setup{}
+	require('lspconfig').sqls.setup{
+    on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+    end
+}
 EOF
 
