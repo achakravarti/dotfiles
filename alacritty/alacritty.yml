@@ -894,10 +894,10 @@ font:
     style: Bold Italic
 
 cursor:
-  blink_interval: 750
   style:
     shape: Block
-    blinking: On
+    blinking: Always
+  blink_interval: 750
 
 
 
