@@ -1,5 +1,6 @@
 devmon &
 progress &
 [ ! -s ~/.config/mpd/pid ] && mpd
-exec i3
+#exec i3
+exec bspwm
 

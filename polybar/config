@@ -247,9 +247,12 @@ height = 20
 modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
 modules-center = filesystem memory cpu system-cpu-temppercore
 modules-right = eth vpn vpn-anyconnect-status powermenu
-wm-restack = i3
+wm-restack = bspwm
 
 
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
 
 
 [module/xwindow]
