@@ -3,14 +3,14 @@
 
 # https://github.com/polybar/polybar-scripts/blob/master/polybar-scripts/info-hackspeed/info-hackspeed.sh
 
-KEYBOARD_ID=16
+KEYBOARD_ID=9
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
-METRIC=cpm
+METRIC=wpm
 FORMAT="# %d $METRIC"
 
-INTERVAL=5
+INTERVAL=1
 
 # If you have a keyboard layout that is not listed here yet, create a condition
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
