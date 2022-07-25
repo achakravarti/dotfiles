@@ -8,7 +8,7 @@ KEYBOARD_ID=9
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
 METRIC=wpm
-FORMAT="# %d $METRIC"
+FORMAT="龍 %d $METRIC"
 
 INTERVAL=1
 

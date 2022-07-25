@@ -53,7 +53,7 @@ get_duration() {
 }
 
 KEY="e35821a5839412d36f99e42df40d0b47"
-CITY="Kolkata, IN"
+CITY="Kolkata,IN"
 UNITS="metric"
 SYMBOL="°"
 

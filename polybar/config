@@ -32,10 +32,10 @@ fixed 	= fixed:pixelsize=8;1
 hack 	= hack:pixelsize=8;1
 siji 	= siji:pixelsize=10;1
 unifont = unifont:fontformat=truetype:size=8:antialias=false;0
-weather = weathericons:pixelsize=12;1
+weather = Weather Icons:style=Regular:size=9;1
 dejavu  = dejavusans:pixelsize=10;1
 emoji    = Noto Emoji:scale=15:antialias=false;0
-fira = FiraCode Nerd Font:style=Regular:size=8;1
+fira = FiraCode Nerd Font:style=Regular:size=9;1
 
 ;[bar/left]
 ;;font-0 = ${fonts.hack}
@@ -194,7 +194,7 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
-modules-left 	= bspwm openweathermap-fullfeatured
+modules-left 	= bspwm xwindow
 modules-center	= mpd
 modules-right   = pulseaudio
 cursor-click = pointer
@@ -211,9 +211,9 @@ wm-restack = bspwm
 
 
 [bar/center]
-font-0 = ${fonts.hack}
-font-1 = ${fonts.unifont}
-font-2 = ${fonts.awesome}
+font-0 = ${fonts.weather}
+font-1 = ${fonts.fira}
+font-2 = ${fonts.emoji}
 padding-left = 2 
 padding-right = 2 
 module-margin-left = 1
@@ -226,7 +226,7 @@ bottom = false
 height = 20
 modules-left 	= bspwm xwindow 
 modules-center = tz-cdt tz-edt tz-utf tz-gmt tz-cest
-modules-right = date xkeyboard info-hackspeed
+modules-right = openweathermap-fullfeatured date xkeyboard info-hackspeed
 wm-restack = bspwm
 offset-x = 8
 offset-y = 4
@@ -267,7 +267,7 @@ label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 label-empty =
-ws-icon-5 = 5;
+ws-icon-5 = 5; 5
 ws-default = 
 
 
@@ -278,18 +278,16 @@ label = %title:0:30:...%
 [module/xkeyboard]
 type = internal/xkeyboard
 ;blacklist-0 = num lock
-
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
+label-layout = %icon%
 label-layout-underline = ${colors.secondary}
-
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+layout-icon-0 = us;🇺🇸
 
 [module/filesystem]
 type = internal/fs
@@ -495,7 +493,7 @@ label-disconnected = %ifname% disconnected
 [module/date]
 date 				= %a, %b %d %Y
 date-alt 			= %Y-%m-%d
-format-prefix 			= " "
+format-prefix 			= " "
 format-prefix-foreground	= ${colors.foreground}
 format-underline 		= #0a6cf5
 interval 			= 1
@@ -613,7 +611,7 @@ menu-2-1-exec = menu-open-0
 
 # https://github.com/plybar/polybar/issues/557
 [module/tz-cest]
-exec 	 = TZ=Europe/Paris date +"%Z: %H:%M%z"
+exec 	 = TZ=Europe/Paris date +"🇫🇷 %H:%M%z %Z"
 interval = 30
 type     = custom/script
 
@@ -623,17 +621,17 @@ interval = 30
 type     = custom/script
 
 [module/tz-gmt]
-exec 	 = TZ=Europe/London date +"%Z: %H:%M%z"
+exec 	 = TZ=Europe/London date +"🇬🇧 %H:%M%z %Z"
 interval = 30
 type     = custom/script
 
 [module/tz-cdt]
-exec     = TZ=America/Chicago date +"%Z: %H:%M%z"
+exec     = TZ=America/Chicago date +"🇺🇸 %H:%M%z %Z"
 interval = 30
 type     = custom/script
 
 [module/tz-edt]
-exec 	 = TZ=America/Toronto date +"%Z: %H:%M%z"
+exec 	 = TZ=America/Toronto date +"🇨🇦 %H:%M%z %Z"
 interval = 30
 type     = custom/script
 
@@ -648,7 +646,7 @@ format-prefix = "  "
 ;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed
 [module/info-hackspeed]
 type = custom/script
-exec = ~/.config/polybar/info-hackspeed.sh
+exec = ~/.config/polybar/scripts/info-hackspeed.sh
 tail = true
 
 ;https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/vpn-anyconnect-status
@@ -676,8 +674,8 @@ format-prefix = "  "
 [module/openweathermap-fullfeatured]
 type = custom/script
 exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
-interval = 600
-label-font = 3
+interval = 100
+label-font = 1
 
 ; https://github.com/unode/polypomo
 [module/polypomo]
