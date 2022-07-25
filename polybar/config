@@ -177,21 +177,19 @@ fira = FiraCode Nerd Font:style=Regular:size=9;1
 
 [bar/left]
 font-0 = ${fonts.hack}
-font-1 = ${fonts.awesome}
-font-2 = ${fonts.weather}
-font-3 = ${fonts.emoji}
+;font-1 = ${fonts.awesome}
+;font-2 = ${fonts.weather}
+font-1 = ${fonts.emoji}
 monitor = ${env:MONITOR:VGA-1-1}
 bottom = false
-width = 100%
-height = 24 
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 2
 line-color = #f00
 border-size = 4
 border-color = #00000000
-padding-left = 0
-padding-right = 0
+padding-left = 2 
+padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 modules-left 	= bspwm xwindow
@@ -208,12 +206,17 @@ tray-maxsize = 18
 tray-detached = false
 tray-background = ${colors.background}
 wm-restack = bspwm 
-
+offset-x = 8
+offset-y = 4
+radius = 10.0
+height = 20 
+width = 99%
 
 [bar/center]
 font-0 = ${fonts.weather}
 font-1 = ${fonts.fira}
 font-2 = ${fonts.emoji}
+font-3 = ${fonts.awesome}
 padding-left = 2 
 padding-right = 2 
 module-margin-left = 1
@@ -226,12 +229,13 @@ bottom = false
 height = 20
 modules-left 	= bspwm xwindow xkeyboard info-hackspeed
 modules-center = date openweathermap-fullfeatured 
-modules-right = tz-cdt tz-edt tz-utf tz-gmt tz-cest
+modules-right = dunst tz-cdt tz-edt tz-utf tz-gmt tz-cest
 wm-restack = bspwm
 offset-x = 8
 offset-y = 4
 radius = 10.0
 width = 99%
+enable-ipc=true
 
 
 [bar/right]
@@ -701,6 +705,13 @@ type = custom/script
 exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/.config/polybar/scripts/player-mpris-tail.py previous:} ⏮ %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py next:} ⏭ %{A}'
 tail = true
 
+
+[module/dunst]
+type = custom/ipc
+initial = 1
+format-foreground = ${colors.yellow}
+hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{A}" &
 
 
 [settings]
