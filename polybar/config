@@ -27,7 +27,7 @@ secondary 	= #e60053
 
 
 [fonts]
-awesome	= fontawesome:pixelsize=10;1
+awesome	= FontAwesome:style=Regular;size=8;3
 fixed 	= fixed:pixelsize=8;1
 hack 	= hack:pixelsize=8;1
 siji 	= siji:pixelsize=10;1
@@ -37,149 +37,14 @@ dejavu  = dejavusans:pixelsize=10;1
 emoji    = Noto Emoji:scale=15:antialias=false;0
 fira = FiraCode Nerd Font:style=Regular:size=9;1
 
-;[bar/left]
-;;font-0 = ${fonts.hack}
-;;font-1 = ${fonts.unifont}
-;;font-2 = ${fonts.awesome}
-;
-;font-0 = ${fonts.hack}
-;font-1 = ${fonts.unifont}
-;font-2 = ${fonts.siji}
-;font-3 = ${fonts.awesome}
-;
-;padding-left = 0
-;padding-right = 0
-;module-margin-left = 1
-;module-margin-right = 1
-;
-;background = ${colors.background}
-;foreground = ${colors.foreground}
-;
-;line-size = 2
-;
-;monitor = ${env:MONITOR:DVI-D-1}
-;bottom = true
-;height = 20
-;
-;;modules-left = i3 mpd
-;;modules-center = 
-;;modules-right = alsa pulseaudio
-;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
-;modules-center = filesystem memory cpu system-cpu-temppercore
-;modules-right = eth vpn vpn-anyconnect-status powermenu
-;
-;wm-restack = i3
-
-;[bar/center]
-;font-0 = ${fonts.hack}
-;font-1 = ${fonts.awesome}
-;font-2 = ${fonts.weather}
-;font-3 = ${fonts.emoji}
-;
-;monitor = ${env:MONITOR:VGA-1-1}
-;bottom = true
-;width = 100%
-;height = 24 
-;;offset-x = 1%
-;;offset-y = 1%
-;;radius = 0.0
-;;fixed-center = false
-;
-;background = ${colors.background}
-;foreground = ${colors.foreground}
-;
-;line-size = 2
-;line-color = #f00
-;
-;border-size = 4
-;border-color = #00000000
-;
-;padding-left = 0
-;padding-right = 0
-;module-margin-left = 1
-;module-margin-right = 1
-;
-;modules-left 	= i3 xkeyboard info-hackspeed
-;modules-center	= tz-cdt tz-edt tz-utc tz-gmt tz-cest
-;modules-right   = polypomo openweathermap-fullfeatured date
-;
-;;tray-position = right
-;;tray-padding = 2
-;;tray-background = #0063ff
-;;
-;;wm-restack = bspwm
-;;wm-restack = i3
-;
-;;override-redirect = true
-;
-;;scroll-up = bspwm-desknext
-;;scroll-down = bspwm-deskprev
-;
-;;scroll-up = i3wm-wsnext
-;;scroll-down = i3wm-wsprev
-;
-;cursor-click = pointer
-;cursor-scroll = ns-resize
-;
-;tray-position = right
-;tray-padding = 9
-;tray-transparent = false
-;tray-offset-y = 0%
-;tray-offset-x = 0%
-;tray-maxsize = 18
-;tray-detached = false
-;tray-background = ${colors.background}
-;wm-restack = i3
-;
-;
-;[bar/right]
-;;font-0 = ${fonts.dejavu}
-;;font-1 = ${fonts.unifont}
-;;font-2 = ${fonts.siji}
-;;font-3 = ${fonts.awesome}
-;
-;font-0 = ${fonts.hack}
-;font-1 = ${fonts.unifont}
-;font-2 = ${fonts.awesome}
-;
-;padding-left = 0
-;padding-right = 0
-;module-margin-left = 1
-;module-margin-right = 1
-;
-;background = ${colors.background}
-;foreground = ${colors.foreground}
-;
-;line-size = 2
-;
-;monitor = ${env:MONITOR:HDMI-1}
-;bottom = true
-;height = 20
-;
-;;modules-left = i3 updates-pacman-aurhelper info-ssh-sessions
-;;modules-center = filesystem memory cpu system-cpu-temppercore
-;;modules-right = eth vpn vpn-anyconnect-status powermenu
-;modules-left = i3 mpd
-;modules-center = 
-;modules-right = alsa pulseaudio
-;
-;;tray-position = right
-;;tray-padding = 9
-;;tray-transparent = false
-;;tray-offset-y = 0%
-;;tray-offset-x = 0%
-;;tray-maxsize = 18
-;;tray-detached = false
-;;tray-background = ${colors.background}
-;wm-restack = i3
-
-
 
 [bar/left]
 font-0 = ${fonts.hack}
 ;font-1 = ${fonts.awesome}
 ;font-2 = ${fonts.weather}
-font-1 = ${fonts.emoji}
+font-1 = ${fonts.awesome}
+font-2 = ${fonts.emoji}
+font-3 = ${fonts.fira}
 monitor = ${env:MONITOR:VGA-1-1}
 bottom = false
 background = ${colors.background}
@@ -192,9 +57,9 @@ padding-left = 2
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
-modules-left 	= bspwm xwindow
+modules-left 	= bspwm xkeyboard info-hackspeed
 modules-center	= player-mpris-tail
-modules-right   = info-cava pulseaudio
+modules-right   = info-cava pulseaudio-control-output
 cursor-click = pointer
 cursor-scroll = ns-resize
 tray-position = right
@@ -212,6 +77,7 @@ radius = 10.0
 height = 20 
 width = 99%
 
+
 [bar/center]
 font-0 = ${fonts.weather}
 font-1 = ${fonts.fira}
@@ -227,7 +93,7 @@ line-size = 2
 monitor = ${env:MONITOR:HDMI-1}
 bottom = false
 height = 20
-modules-left 	= bspwm xwindow xkeyboard info-hackspeed
+modules-left 	= bspwm xwindow 
 modules-center = date openweathermap-fullfeatured 
 modules-right = dunst tz-cdt tz-edt tz-utf tz-gmt tz-cest
 wm-restack = bspwm
@@ -712,6 +578,40 @@ initial = 1
 format-foreground = ${colors.yellow}
 hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
 hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{A}" &
+
+
+[module/pulseaudio-control-output]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --node-blacklist is only needed for next-node).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo:  Analog" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo:  HDMI" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control next-node
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
+[module/pulseaudio-control-input]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Use --node-blacklist to remove the unwanted PulseAudio .monitor that are child of sinks
+exec = pulseaudio-control  --node-type input --icons-volume "" --icon-muted "" --node-nickname "alsa_output.pci-0000_0c_00.3.analog-stereo:  Webcam" --node-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" --node-blacklist "*.monitor" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control --node-type input togmute
+click-middle = pulseaudio-control --node-type input next-node
+scroll-up = pulseaudio-control --node-type input --volume-max 130 up
+scroll-down = pulseaudio-control --node-type input --volume-max 130 down
 
 
 [settings]
