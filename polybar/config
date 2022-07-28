@@ -104,41 +104,70 @@ width = 99%
 enable-ipc=true
 
 
-[bar/right]
-font-0 = ${fonts.hack}
-font-1 = ${fonts.unifont}
-font-2 = ${fonts.siji}
-font-3 = ${fonts.awesome}
-padding-left = 0
-padding-right = 0
-module-margin-left = 1
-module-margin-right = 1
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 2
-monitor = ${env:MONITOR:DVI-D-1}
-bottom = false
-height = 20
-modules-left = bspwm updates-pacman-aurhelper info-ssh-sessions
-modules-center = filesystem memory cpu system-cpu-temppercore
-modules-right = eth vpn vpn-anyconnect-status powermenu
-wm-restack = bspwm
+;[bar/right]
+;font-0 = ${fonts.hack}
+;font-1 = ${fonts.unifont}
+;font-2 = ${fonts.siji}
+;font-3 = ${fonts.awesome}
+;padding-left = 0
+;padding-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+;line-size = 2
+;monitor = ${env:MONITOR:DVI-D-1}
+;bottom = false
+;height = 20
+;modules-left = bspwm updates-pacman-aurhelper info-ssh-sessions
+;modules-center = filesystem memory cpu system-cpu-temppercore
+;modules-right = eth vpn vpn-anyconnect-status powermenu
+;wm-restack = bspwm
+
+
+
+[bar/workspace]
+background     = ${colors.background}
+bottom         = false
+fixed-center   = true
+font-0 	       = ${fonts.fira}
+foreground     = ${colors.foreground}
+height         = 20
+modules-center = bspwm
+radius         = 10.0
+width          = 95
+wm-restack     = bspwm
+
+
+[bar/r0]
+inherit  = bar/workspace
+monitor  = ${env:MONITOR:DVI-D-1}
+offset-x = 8
+offset-y = 4
 
 
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = true
-label-focused = %name%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-padding = 2
-label-occupied = %name%
-label-occupied-padding = 2
-label-urgent = %name%!
+label-focused-padding = 1
+label-occupied = %icon%
+label-occupied-padding = 1
+label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-label-empty =
-ws-icon-5 = 5; 5
-ws-default = 
+label-urgent-padding = 1
+label-empty = %name%
+label-empty-padding = 1
+ws-icon-1 = 1;龎
+ws-icon-2 = 2;
+ws-icon-3 = 3;ﱘ
+ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;歷
 
 
 [module/xwindow]

@@ -1,6 +1,26 @@
+#!/bin/sh
+
+# Initialise non-graphical apps
 devmon &
 progress &
 [ ! -s ~/.config/mpd/pid ] && mpd
-#exec i3
+
+# Initialise X-related stuff
+xsetroot -cursor_name left_ptr &
+xrandr --output HDMI-1 --set TearFree on
+xrandr --output DVI-D-1 --set TearFree on
+xrandr \
+	--output HDMI-1 --primary --mode 1920x1080 --rotate normal \
+	--output DVI-D-1 --mode 1920x1080 --rotate normal --right-of HDMI-1 \
+	--output VGA-2 --off \
+       	--output VGA-1-1 --mode 1366x768 --rotate normal --left-of HDMI-1
+picom &
+feh \
+	--recursive --bg-scale --randomize /usr/share/backgrounds/archlinux \
+	--recursive --bg-scale --randomize /usr/share/backgrounds/archlinux \
+	--recursive --bg-scale --randomize /usr/share/backgrounds/archlinux
+
+# Initialise WM
+sxhkd &
 exec bspwm
 

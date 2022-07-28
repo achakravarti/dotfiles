@@ -32,7 +32,8 @@ if type "xrandr" > /dev/null; then
 	then
 		MONITOR=$m polybar --reload center -c ~/.config/polybar/config &
 	else
-		MONITOR=$m polybar --reload right -c ~/.config/polybar/config &
+		#MONITOR=$m polybar --reload right -c ~/.config/polybar/config &
+		MONITOR=$m polybar --reload r0 -c ~/.config/polybar/config &
 	fi     
       done
     else
