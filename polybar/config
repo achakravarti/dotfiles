@@ -183,10 +183,12 @@ width          = 200
 font-0         = ${fonts.fira}
 font-1         = ${fonts.emoji}
 inherit        = bar/base
-modules-center = tz-cdt tz-edt tz-utf tz-gmt tz-cest
+modules-center = tz-cdt  tz-edt tz-utf tz-gmt tz-cest
+module-margin-left = 1
+module-margin-right = 1
 monitor        = ${env:MONITOR:DVI-D-1}
-offset-x       = 1310
-width          = 600
+offset-x       = 1270
+width          = 640
 
 
 
