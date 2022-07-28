@@ -125,7 +125,18 @@ enable-ipc=true
 ;wm-restack = bspwm
 
 
+[bar/base]
+background     = ${colors.background}
+bottom         = false
+fixed-center   = true
+foreground     = ${colors.foreground}
+height         = 20
+offset-y       = 4
+radius         = 10.0
+wm-restack     = bspwm
 
+
+; Minibar to show workspaces
 [bar/workspace]
 background     = ${colors.background}
 bottom         = false
@@ -139,11 +150,44 @@ width          = 95
 wm-restack     = bspwm
 
 
+; Minibar 0 for right monitor
 [bar/r0]
 inherit  = bar/workspace
 monitor  = ${env:MONITOR:DVI-D-1}
 offset-x = 8
 offset-y = 4
+
+
+; Minibar 1 for right monitor; shows local date and time
+[bar/r1]
+font-0 	       = ${fonts.fira}
+inherit        = bar/base
+modules-center = date
+monitor        = ${env:MONITOR:DVI-D-1}
+offset-x       = 120
+width          = 200
+
+; Minibar 2 for right monitor; shows weather
+[bar/r2]
+font-0         = ${fonts.weather}
+font-1         = ${fonts.fira}
+inherit        = bar/base
+modules-center = openweathermap-fullfeatured
+monitor        = ${env:MONITOR:DVI-D-1}
+offset-x       = 340
+width          = 200
+
+
+; Minibar 3 for right monitor; shows world clock
+[bar/r3]
+font-0         = ${fonts.fira}
+font-1         = ${fonts.emoji}
+inherit        = bar/base
+modules-center = tz-cdt tz-edt tz-utf tz-gmt tz-cest
+monitor        = ${env:MONITOR:DVI-D-1}
+offset-x       = 1310
+width          = 600
+
 
 
 [module/bspwm]
@@ -396,13 +440,12 @@ label-disconnected = %ifname% disconnected
 
 
 [module/date]
-date 				= %a, %b %d %Y
+date 				= %a, %b %d
 date-alt 			= %Y-%m-%d
 format-prefix 			= "  "
 format-prefix-foreground	= ${colors.foreground}
-format-underline 		= #0a6cf5
 interval 			= 1
-label 				= %date% %time%
+label 				= %date% ~ %time%
 time 				= %H:%M
 time-alt 			= %H:%M:%S
 type 				= internal/date
