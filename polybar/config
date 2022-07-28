@@ -35,7 +35,7 @@ unifont = unifont:fontformat=truetype:size=8:antialias=false;0
 weather = Weather Icons:style=Regular:size=9;1
 dejavu  = dejavusans:pixelsize=10;1
 emoji    = Noto Emoji:scale=15:antialias=false;0
-fira = FiraCode Nerd Font:style=Regular:size=9;1
+fira = FiraCode Nerd Font:style=Regular:size=10;1
 
 
 [bar/left]
