@@ -14,6 +14,7 @@ xrandr \
 	--output DVI-D-1 --mode 1920x1080 --rotate normal --right-of HDMI-1 \
 	--output VGA-2 --off \
        	--output VGA-1-1 --mode 1366x768 --rotate normal --left-of HDMI-1
+xrdb -merge ~/.Xresources
 picom &
 feh \
 	--recursive --bg-scale --randomize /usr/share/backgrounds/archlinux \
