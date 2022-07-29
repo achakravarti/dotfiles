@@ -146,7 +146,7 @@ foreground     = ${colors.foreground}
 height         = 20
 modules-center = bspwm
 radius         = 10.0
-width          = 95
+width          = 85
 wm-restack     = bspwm
 
 
@@ -164,8 +164,8 @@ font-0 	       = ${fonts.fira}
 inherit        = bar/base
 modules-center = date
 monitor        = ${env:MONITOR:DVI-D-1}
-offset-x       = 120
-width          = 200
+offset-x       = 110
+width          = 180
 
 ; Minibar 2 for right monitor; shows weather
 [bar/r2]
@@ -174,8 +174,8 @@ font-1         = ${fonts.fira}
 inherit        = bar/base
 modules-center = openweathermap-fullfeatured
 monitor        = ${env:MONITOR:DVI-D-1}
-offset-x       = 340
-width          = 200
+offset-x       = 310
+width          = 190
 
 
 ; Minibar 3 for right monitor; shows world clock
@@ -187,8 +187,8 @@ modules-center = tz-cdt  tz-edt tz-utf tz-gmt tz-cest
 module-margin-left = 1
 module-margin-right = 1
 monitor        = ${env:MONITOR:DVI-D-1}
-offset-x       = 1270
-width          = 640
+offset-x       = 1325
+width          = 585
 
 
 
