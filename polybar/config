@@ -78,30 +78,30 @@ height = 20
 width = 99%
 
 
-[bar/center]
-font-0 = ${fonts.weather}
-font-1 = ${fonts.fira}
-font-2 = ${fonts.emoji}
-font-3 = ${fonts.awesome}
-padding-left = 2 
-padding-right = 2 
-module-margin-left = 1
-module-margin-right = 1
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 2
-monitor = ${env:MONITOR:HDMI-1}
-bottom = false
-height = 20
-modules-left 	= bspwm xwindow 
-modules-center = date openweathermap-fullfeatured 
-modules-right = dunst tz-cdt tz-edt tz-utf tz-gmt tz-cest
-wm-restack = bspwm
-offset-x = 8
-offset-y = 4
-radius = 10.0
-width = 99%
-enable-ipc=true
+;[bar/center]
+;font-0 = ${fonts.weather}
+;font-1 = ${fonts.fira}
+;font-2 = ${fonts.emoji}
+;font-3 = ${fonts.awesome}
+;padding-left = 2 
+;padding-right = 2 
+;module-margin-left = 1
+;module-margin-right = 1
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+;line-size = 2
+;monitor = ${env:MONITOR:HDMI-1}
+;bottom = false
+;height = 20
+;modules-left 	= bspwm xwindow 
+;modules-center = date openweathermap-fullfeatured 
+;modules-right = dunst tz-cdt tz-edt tz-utf tz-gmt tz-cest
+;wm-restack = bspwm
+;offset-x = 8
+;offset-y = 4
+;radius = 10.0
+;width = 99%
+;enable-ipc=true
 
 
 ;[bar/right]
@@ -150,7 +150,28 @@ width          = 85
 wm-restack     = bspwm
 
 
-; Minibar 0 for right monitor
+; Minibar 0 for center monitor 0; shows workspaces
+[bar/c0]
+inherit  = bar/workspace
+monitor  = ${env:MONITOR:HDMI-1}
+offset-x = 8
+offset-y = 4
+
+
+; Minibar 1 for center monitor; shows keyboard and typing speed
+[bar/c1]
+font-0 	            = ${fonts.fira}
+font-1 	            = ${fonts.emoji}
+inherit             = bar/base
+modules-center      = xkeyboard info-hackspeed
+module-margin-left  = 1
+module-margin-right = 1
+monitor             = ${env:MONITOR:HDMI-1}
+offset-x            = 110
+width               = 120
+
+
+; Minibar 0 for right monitor; shows workspaces
 [bar/r0]
 inherit  = bar/workspace
 monitor  = ${env:MONITOR:DVI-D-1}
@@ -180,15 +201,15 @@ width          = 190
 
 ; Minibar 3 for right monitor; shows world clock
 [bar/r3]
-font-0         = ${fonts.fira}
-font-1         = ${fonts.emoji}
-inherit        = bar/base
-modules-center = tz-cdt  tz-edt tz-utf tz-gmt tz-cest
-module-margin-left = 1
+font-0              = ${fonts.fira}
+font-1              = ${fonts.emoji}
+inherit             = bar/base
+modules-center      = tz-cdt  tz-edt tz-utf tz-gmt tz-cest
+module-margin-left  = 1
 module-margin-right = 1
-monitor        = ${env:MONITOR:DVI-D-1}
-offset-x       = 1325
-width          = 585
+monitor             = ${env:MONITOR:DVI-D-1}
+offset-x            = 1325
+width               = 585
 
 
 
@@ -208,10 +229,10 @@ label-empty-padding = 1
 ws-icon-0 = 1;龎
 ws-icon-1 = 2;
 ws-icon-2 = 3;ﱘ
-ws-icon-3 = 4;
+ws-icon-3 = 4;ﬦ
 ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;歷
 

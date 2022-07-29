@@ -30,9 +30,10 @@ if type "xrandr" > /dev/null; then
 		MONITOR=$m polybar --reload left -c ~/.config/polybar/config &	
 	elif [ $m == 'HDMI-1' ]
 	then
-		MONITOR=$m polybar --reload center -c ~/.config/polybar/config &
+		#MONITOR=$m polybar --reload center -c ~/.config/polybar/config &
+		MONITOR=$m polybar --reload c0 -c ~/.config/polybar/config &
+		MONITOR=$m polybar --reload c1 -c ~/.config/polybar/config &
 	else
-		#MONITOR=$m polybar --reload right -c ~/.config/polybar/config &
 		MONITOR=$m polybar --reload r0 -c ~/.config/polybar/config &
 		MONITOR=$m polybar --reload r1 -c ~/.config/polybar/config &
 		MONITOR=$m polybar --reload r2 -c ~/.config/polybar/config &
