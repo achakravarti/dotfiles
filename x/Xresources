@@ -46,7 +46,7 @@
 *.color14: nord7
 *.color15: nord6
 
-URxvt.font: xft:FiraCode Nerd Font Mono:size=9:antialias=true
+URxvt.font: xft:FiraCode Nerd Font Mono:size=8:antialias=true
 URxvt.scrollBar: false
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
