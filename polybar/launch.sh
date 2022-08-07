@@ -21,23 +21,32 @@ killall -q polybar
 #https://github.com/kraeki/.i3/blob/master/bin/run_polybar.sh
 
 
-while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+render()
+{
+        MONITOR="$1" polybar --reload "$2" -c ~/.config/polybar/config &
+}
+
+
+while pgrep -u $UID -x polybar >/dev/null; do
+ 	sleep 1
+done
+
 
 if type "xrandr" > /dev/null; then
       for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-	if [ $m == 'VGA-1-1' ] 
+	if [ $m = 'VGA-1-1' ] 
 	then		
-		MONITOR=$m polybar --reload left -c ~/.config/polybar/config &	
-	elif [ $m == 'HDMI-1' ]
+		MONITOR=$m polybar --reload left -c ~/.config/polybar/config & disown
+	elif [ $m = 'HDMI-1' ]
 	then
-		#MONITOR=$m polybar --reload center -c ~/.config/polybar/config &
-		MONITOR=$m polybar --reload c0 -c ~/.config/polybar/config &
-		MONITOR=$m polybar --reload c1 -c ~/.config/polybar/config &
+		render "$m" c0
+		render "$m" c1
+		render "$m" c2
 	else
-		MONITOR=$m polybar --reload r0 -c ~/.config/polybar/config &
-		MONITOR=$m polybar --reload r1 -c ~/.config/polybar/config &
-		MONITOR=$m polybar --reload r2 -c ~/.config/polybar/config &
-		MONITOR=$m polybar --reload r3 -c ~/.config/polybar/config &
+		render "$m" r0
+		render "$m" r1
+		render "$m" r2
+		render "$m" r3
 	fi     
       done
     else
@@ -46,3 +55,4 @@ if type "xrandr" > /dev/null; then
 fi
 
 echo "Bars launched..."
+
